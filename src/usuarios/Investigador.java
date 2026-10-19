@@ -16,9 +16,10 @@ public class Investigador {
         this.experimentos = new ArrayList<>();
     }
 
-    /** Asocia el investigador a un experimento existente. */
+
     public void asociarExperimento(Experimento experimento) {
-        if (experimento != null) {
+        // Validamos que no sea nulo y que no esté ya en la lista
+        if (experimento != null && !this.experimentos.contains(experimento)) {
             this.experimentos.add(experimento);
         }
     }
