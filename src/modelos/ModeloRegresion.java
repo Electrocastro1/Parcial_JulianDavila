@@ -14,10 +14,9 @@ public class ModeloRegresion extends Modelo {
 
     @Override
     public double entrenar(Dataset dataset) {
-        // Obtenemos la cantidad máxima de épocas
+
         int maxEpocas = getLossPorEpoca().length;
 
-        // Simulamos un loss inicial que dependa del grado del polinomio
         int lossSimulado = grado * 50;
 
         for (int i = 0; i < maxEpocas; i++) {
@@ -27,7 +26,7 @@ public class ModeloRegresion extends Modelo {
             lossSimulado -= 5;
         }
 
-        // Retornamos el mejor loss alcanzado que calculó la clase padre
+
         return mejorLoss();
     }
 
