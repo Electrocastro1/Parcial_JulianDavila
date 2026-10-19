@@ -2,9 +2,7 @@ package modelos;
 
 import datos.Dataset;
 
-/**
- * Modelo de regresión. Hiperparámetro: grado del polinomio.
- */
+
 public class ModeloRegresion extends Modelo {
 
     private int grado;
@@ -16,8 +14,20 @@ public class ModeloRegresion extends Modelo {
 
     @Override
     public double entrenar(Dataset dataset) {
-        // TODO: implementar
-        return 0;
+
+        int maxEpocas = getLossPorEpoca().length;
+
+        int lossSimulado = grado * 50;
+
+        for (int i = 0; i < maxEpocas; i++) {
+
+            registrarEpoca(lossSimulado);
+
+            lossSimulado -= 5;
+        }
+
+
+        return mejorLoss();
     }
 
     public int getGrado() { return grado; }

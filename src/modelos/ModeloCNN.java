@@ -2,9 +2,7 @@ package modelos;
 
 import datos.Dataset;
 
-/**
- * Modelo CNN. Hiperparámetro: número de filtros.
- */
+
 public class ModeloCNN extends Modelo {
 
     private int numFiltros;
@@ -14,17 +12,25 @@ public class ModeloCNN extends Modelo {
         this.numFiltros = numFiltros;
     }
 
-    /**
-     * TODO estudiante:
-     * Simula el entrenamiento registrando hasta maxEpocas valores decrecientes
-     * de loss. Retorna el mejor (menor) loss alcanzado.
-     * Puedes usar un loss inicial proporcional a numFiltros y decrementarlo
-     * en cada época.
-     */
+
     @Override
     public double entrenar(Dataset dataset) {
-        // TODO: implementar
-        return 0;
+
+        int maxEpocas = getLossPorEpoca().length;
+
+
+        int lossSimulado = numFiltros * 100;
+
+        for (int i = 0; i < maxEpocas; i++) {
+
+            registrarEpoca(lossSimulado);
+
+
+            lossSimulado -= 10;
+        }
+
+
+        return mejorLoss();
     }
 
     public int getNumFiltros() { return numFiltros; }
